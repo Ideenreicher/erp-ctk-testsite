@@ -11,8 +11,8 @@ const navLinks = [
 ];
 ---
 
-<header class="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur relative">
-  <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-3 lg:px-8">
+<header class="sticky top-0 z-50 relative border-b border-border bg-white/92 backdrop-blur-[12px]">
+  <div class="mx-auto flex max-w-7xl h-16 items-center justify-between gap-6 px-6 lg:h-[76px] lg:px-8">
     <a
       href="https://www.ctk-gmbh.de"
       class="flex shrink-0 items-center gap-3"
@@ -21,9 +21,8 @@ const navLinks = [
       <img
         src="/assets/header/ctk-logo.svg"
         alt="CTK IT-Lösungen und Service"
-        width="113"
-        height="43"
-        class="h-[43px] w-[113px]"
+        height="45"
+        class="h-[45px] w-auto"
       />
     </a>
 
@@ -32,7 +31,7 @@ const navLinks = [
         navLinks.map((link) => (
           <a
             href={link.href}
-            class="text-sm font-medium text-muted transition-colors hover:text-foreground"
+            class="text-[15px] text-foreground transition-colors hover:text-brand"
           >
             {link.label}
           </a>
@@ -45,7 +44,7 @@ const navLinks = [
         href={BOOKING_URL}
         target="_blank"
         rel="noopener noreferrer"
-        class="hidden rounded-lg bg-button px-4 py-2 text-[14.4px] font-semibold text-white shadow-[0px_4px_14px_0px_rgba(59,130,246,0.35)] transition-opacity hover:opacity-90 sm:inline-block"
+        class="ctk-btn ctk-btn--primary ctk-btn--sm hidden sm:inline-flex"
       >
         Termin vereinbaren
       </a>
@@ -55,7 +54,7 @@ const navLinks = [
         aria-label="Menü öffnen"
         aria-expanded="false"
         aria-controls="mobile-menu"
-        class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border bg-surface text-muted transition-colors hover:text-foreground lg:hidden"
+        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-border bg-white text-foreground transition-colors hover:text-brand lg:hidden"
       >
         <svg id="icon-burger" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="3" y1="6" x2="21" y2="6" />
@@ -72,13 +71,13 @@ const navLinks = [
 
   <nav
     id="mobile-menu"
-    class="absolute left-0 right-0 top-full hidden flex-col gap-1 border-t border-border bg-background px-6 py-4 shadow-lg lg:hidden"
+    class="absolute left-0 right-0 top-full hidden flex-col gap-1 border-t border-border bg-white px-6 py-4 shadow-md lg:hidden"
   >
     {
       navLinks.map((link) => (
         <a
           href={link.href}
-          class="rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface hover:text-foreground"
+          class="rounded-md px-3 py-3 text-[15px] text-foreground transition-colors hover:bg-blue-50 hover:text-brand"
         >
           {link.label}
         </a>
@@ -88,7 +87,7 @@ const navLinks = [
       href={BOOKING_URL}
       target="_blank"
       rel="noopener noreferrer"
-      class="mt-2 rounded-lg bg-button px-4 py-2 text-center text-[14.4px] font-semibold text-white shadow-[0px_4px_14px_0px_rgba(59,130,246,0.35)] transition-opacity hover:opacity-90"
+      class="ctk-btn ctk-btn--primary mt-2"
     >
       Termin vereinbaren
     </a>

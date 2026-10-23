@@ -4,16 +4,16 @@ const PRIVACY_URL = 'https://www.ctk-gmbh.de/datenschutz';
 
 <div
   id="cookie-consent"
-  class="fixed inset-x-0 bottom-0 z-[100] hidden border-t border-border bg-background/95 px-6 py-5 shadow-[0_-8px_30px_rgba(15,23,42,0.12)] backdrop-blur"
+  class="fixed inset-x-0 bottom-0 z-[100] hidden border-t border-border bg-white/95 px-6 py-5 shadow-lg backdrop-blur"
   role="dialog"
   aria-live="polite"
   aria-label="Cookie-Einstellungen"
 >
   <div class="mx-auto flex max-w-7xl flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-    <p class="text-sm leading-[1.6] text-muted">
+    <p class="text-sm text-muted">
       Wir verwenden Cookies, um unsere Website bereitzustellen und unser Kontaktformular anzubieten. Notwendige
       Cookies sind für den Betrieb der Seite erforderlich. Weitere Details finden Sie in unserer
-      <a href={PRIVACY_URL} target="_blank" rel="noopener noreferrer" class="font-semibold text-brand-dark underline hover:text-brand">
+      <a href={PRIVACY_URL} target="_blank" rel="noopener noreferrer" class="font-bold text-brand underline hover:text-brand">
         Datenschutzerklärung
       </a>.
     </p>
@@ -21,14 +21,14 @@ const PRIVACY_URL = 'https://www.ctk-gmbh.de/datenschutz';
       <button
         id="cookie-consent-necessary"
         type="button"
-        class="rounded-lg border border-border bg-surface px-4 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-border/40"
+        class="ctk-btn ctk-btn--secondary ctk-btn--sm"
       >
         Nur notwendige
       </button>
       <button
         id="cookie-consent-all"
         type="button"
-        class="rounded-lg bg-button px-4 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+        class="ctk-btn ctk-btn--primary ctk-btn--sm"
       >
         Alle akzeptieren
       </button>

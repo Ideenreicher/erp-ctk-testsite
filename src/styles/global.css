@@ -1,84 +1,120 @@
 @import "tailwindcss";
+@import "./ctk-tailwind.css";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
-  --color-surface: var(--surface);
-  --color-brand: var(--brand);
-  --color-brand-dark: var(--brand-dark);
-  --color-button: var(--button);
-  --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
-  --color-danger: var(--danger);
-  --color-info: var(--info);
-  --color-dark-surface: var(--dark-surface);
-  --color-dark-surface-alt: var(--dark-surface-alt);
-  --font-display: var(--font-body);
-  --font-body: var(--font-body);
-}
-
-:root {
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --muted: #64748b;
-  --border: #e2e8f0;
-  --surface: #f8fafc;
-  --brand: #006cb5;
-  --brand-dark: #004b7c;
-  --button: #1d71b8;
-  --accent: #96c11f;
-  --accent-soft: #f5f9e9;
-  --danger: #ef4444;
-  --info: #0ea5e9;
-  --dark-surface: #06304f;
-  --dark-surface-alt: #04203a;
-  --font-body: "Inter", sans-serif;
-}
-
-.dark {
-  --background: #0b1220;
-  --foreground: #f1f5f9;
-  --muted: #94a3b8;
-  --border: #1e293b;
-  --surface: #111d30;
-  --accent-soft: #1a2a10;
+/* Semantische Aliase der Komponenten auf die CTK-Tokens (ctk-brand Skill) */
+@theme {
+  --color-background: var(--ctk-color-bg);
+  --color-foreground: var(--ctk-color-text);
+  --color-muted: var(--ctk-color-text-secondary);
+  --color-border: var(--ctk-color-border);
+  --color-surface: var(--ctk-color-bg-muted);
+  --color-brand: var(--ctk-color-primary);
+  --color-brand-dark: var(--ctk-blue-800);
+  --color-button: var(--ctk-color-primary);
+  --color-button-hover: var(--ctk-color-primary-hover);
+  --color-accent-soft: var(--ctk-green-50);
+  --color-accent-text: var(--ctk-color-accent-strong);
+  --color-on-accent: var(--ctk-color-on-accent);
+  --color-danger: var(--ctk-color-danger);
+  --color-info: var(--ctk-color-primary);
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body);
+  background-color: var(--ctk-color-bg);
+  color: var(--ctk-color-text);
+  font-family: var(--ctk-font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Overline: 12px, 700, Versalien, +0.08em, Blau */
+.ctk-overline-blue {
+  font-size: var(--ctk-text-overline);
+  font-weight: var(--ctk-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ctk-color-text-brand);
+}
+
+/* Primaerbutton (48px, Radius 8px, Hover Blau-700) */
+.ctk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: var(--ctk-radius-md);
+  border: 1px solid transparent;
+  font: 700 1rem/1 var(--ctk-font-sans);
+  transition:
+    background var(--ctk-duration-fast) var(--ctk-ease-standard),
+    transform var(--ctk-duration-fast) var(--ctk-ease-standard),
+    box-shadow var(--ctk-duration-fast) var(--ctk-ease-standard);
+}
+.ctk-btn:focus-visible {
+  outline: 2px solid var(--ctk-color-focus-ring);
+  outline-offset: 2px;
+}
+.ctk-btn--sm { height: 40px; padding: 0 16px; font-size: 0.9375rem; }
+.ctk-btn--primary { background: var(--ctk-color-primary); color: var(--ctk-color-on-primary); }
+.ctk-btn--primary:hover {
+  background: var(--ctk-color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--ctk-shadow-md);
+}
+.ctk-btn--secondary {
+  background: #fff;
+  color: var(--ctk-color-primary);
+  border-color: var(--ctk-color-border-strong);
+}
+.ctk-btn--secondary:hover {
+  border-color: var(--ctk-color-primary);
+  background: var(--ctk-color-primary-subtle);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ctk-color-focus-ring);
+  outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   [data-reveal] {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(12px);
     transition:
-      opacity 0.7s ease,
-      transform 0.7s ease;
+      opacity 0.32s var(--ctk-ease-out),
+      transform 0.32s var(--ctk-ease-out);
   }
 
   [data-reveal].is-visible {
     opacity: 1;
     transform: translateY(0);
   }
-
-  .icon-pulse {
-    animation: icon-pulse 2.6s ease-in-out infinite;
-  }
 }
 
-@keyframes icon-pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.07);
-  }
+/* Ueberschriften nach Typografie-Skala (700, Inter) */
+.ctk-h1 { font-size: var(--ctk-text-h1); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; }
+.ctk-h2 { font-size: var(--ctk-text-h2); font-weight: 700; line-height: 1.25; letter-spacing: -0.015em; }
+.ctk-h3 { font-size: var(--ctk-text-h4); font-weight: 700; line-height: 1.25; letter-spacing: -0.015em; }
+.ctk-lead { font-size: var(--ctk-text-lead); font-weight: 300; line-height: 1.65; }
+
+/* Karten-Hover: Rahmen Blau-200, 2px nach oben, Schatten md */
+.ctk-card-hover {
+  transition:
+    opacity 0.32s var(--ctk-ease-out),
+    border-color var(--ctk-duration-fast) var(--ctk-ease-standard),
+    transform var(--ctk-duration-fast) var(--ctk-ease-standard),
+    box-shadow var(--ctk-duration-fast) var(--ctk-ease-standard);
+}
+.ctk-card-hover:hover {
+  border-color: var(--ctk-blue-200);
+  transform: translateY(-2px);
+  box-shadow: var(--ctk-shadow-md);
+}
+
+/* Variante fuer Huerden/Probleme: Rahmen Rot, roter Schatten */
+.ctk-card-hover.ctk-card-hover--danger:hover {
+  border-color: var(--ctk-color-danger);
+  box-shadow: 0 14px 34px -14px rgba(220, 38, 39, 0.35);
 }

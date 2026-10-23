@@ -14,14 +14,8 @@ const checkmarkPath =
     src="/assets/hero/dots-pattern.png"
     alt=""
     aria-hidden="true"
-    class="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover dark:hidden"
+    class="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover"
   />
-  <!-- Dark mode fallback (the light dot asset would look wrong on a dark bg) -->
-  <div
-    class="pointer-events-none absolute inset-0 -z-20 hidden bg-gradient-to-br dark:block dark:from-[#0b1220] dark:via-[#0b1220] dark:to-[#0b2338]"
-  >
-  </div>
-
   <!-- Illustration: real Figma isometric laptop / ERP dashboard export, bleeding off the right edge on large screens -->
   <div
     class="pointer-events-none relative mx-auto mt-8 w-full max-w-sm px-6 sm:max-w-md lg:absolute lg:inset-y-0 lg:right-[-8%] lg:z-0 lg:mt-0 lg:flex lg:w-[46rem] lg:max-w-none lg:items-center lg:justify-end lg:px-0 xl:right-0"
@@ -32,36 +26,27 @@ const checkmarkPath =
       width="1914"
       height="1574"
       alt=""
-      class="h-auto w-full [mask-image:radial-gradient(ellipse_60%_60%_at_center,black_55%,transparent_85%)] [mask-repeat:no-repeat] dark:brightness-90 lg:w-[42rem]"
+      class="h-auto w-full [mask-image:radial-gradient(ellipse_60%_60%_at_center,black_55%,transparent_85%)] [mask-repeat:no-repeat] lg:w-[42rem]"
     />
   </div>
 
   <div class="relative z-10 mx-auto max-w-3xl px-6 py-20 text-center lg:py-28">
-    <span
-      class="inline-flex items-center gap-2 rounded-md border border-[#c5dd84] bg-[#eaf3d2] py-1 pr-[15px] dark:border-accent/40 dark:bg-accent-soft text-center pl-[15px]"
-    >
-      <span class="text-[11px] font-semibold tracking-wide text-[#3c4d0c] uppercase dark:text-accent">
-        CTK Business Software
-      </span>
+    <span class="inline-flex h-8 items-center rounded-full bg-blue-50 px-3.5 text-xs font-bold tracking-[0.08em] text-blue-700 uppercase">
+      CTK Business Software
     </span>
 
-    <h1 class="mt-5 text-4xl font-extrabold tracking-tight text-balance text-[#1e293b] sm:text-5xl dark:text-foreground">
-      Mehr als ERP –<br /> <em
-        class="inline-block bg-clip-text pr-[0.15em] text-transparent italic"
-        style="background-image: linear-gradient(135deg, #006cb5 0%, #006cb5 34%, #004b7c 100%);"
-      >
-Ein Partner für Ihre Unternehmensprozesse.
-</em>
+    <h1 class="ctk-h1 mt-5 text-balance text-foreground" style="font-size: clamp(2.25rem, 1.5rem + 2.4vw, 3rem);">
+      Mehr als ERP –<br /> <span class="text-brand">Ein Partner für Ihre Unternehmensprozesse</span><span class="text-accent">.</span>
     </h1>
 
-    <p class="mx-auto mt-5 max-w-xl text-lg font-semibold text-foreground">
+    <p class="ctk-lead mx-auto mt-5 max-w-2xl text-balance text-muted">
       ERP-Beratung und Einführung für mittelständische Unternehmen
     </p>
 
     <ul class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
       {
         trustPoints.map((point) => (
-          <li class="flex items-center gap-2 text-sm font-medium text-[#1e293b] dark:text-foreground">
+          <li class="flex items-center gap-2 text-sm font-bold text-foreground">
             <svg
               viewBox="0 0 17.6244 18"
               class="h-[18px] w-[17.6px] -scale-y-100 text-info"
@@ -82,13 +67,13 @@ Ein Partner für Ihre Unternehmensprozesse.
         href={BOOKING_URL}
         target="_blank"
         rel="noopener noreferrer"
-        class="rounded-lg bg-button px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_14px_rgba(59,130,246,0.35)] transition-opacity hover:opacity-90"
+        class="ctk-btn ctk-btn--primary"
       >
         Jetzt unverbindlich beraten lassen
       </a>
       <a
         href="#vorgehen"
-        class="rounded-lg border border-[#cbd5e1] bg-white px-6 py-3 text-sm font-semibold text-[#0f172a] transition-colors hover:bg-surface dark:border-border dark:bg-surface dark:text-foreground"
+        class="ctk-btn ctk-btn--secondary"
       >
         Unser Vorgehen ansehen
       </a>

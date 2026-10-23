@@ -1,0 +1,304 @@
+/* ==========================================================================
+   CTK GmbH – Design Tokens (Single Source of Truth für Web)
+   Version 1.0 · 2026-10
+   Nicht von Hand ändern, ohne ctk-tokens.json und primeng/ctk-preset.ts
+   mitzuziehen.
+   ========================================================================== */
+
+/* --- Schrift (self-hosted, DSGVO: kein Google-Fonts-CDN) ---------------- */
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 300; font-display: swap; src: url("../assets/fonts/Inter_18pt-Light.ttf") format("truetype"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/Inter_18pt-Regular.ttf") format("truetype"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/fonts/Inter_18pt-Bold.ttf") format("truetype"); }
+
+:root {
+  /* ---------- 1. Primitive: Markenfarben (aus der CI-Farbtafel) ---------- */
+  --ctk-blau:    #006cb5;   /* = blue-600  · Primärfarbe */
+  --ctk-marine:  #00497f;   /* = blue-800  · Tiefe, Verlaufsende */
+  --ctk-gruen:   #96c11f;   /* = green-500 · Akzent, NIE als Text auf Hell */
+  --ctk-grau:    #f0f0ef;   /* = neutral-100 · Flächen */
+  --ctk-schwarz: #000000;   /* nur Print/Logo-Sonderfälle; Text = neutral-900 */
+
+  /* ---------- 2. Primitive: Skalen ---------- */
+  --ctk-blue-50:  #eff8ff;
+  --ctk-blue-100: #dcf0ff;
+  --ctk-blue-200: #bae0ff;
+  --ctk-blue-300: #8bc8fa;
+  --ctk-blue-400: #54a9ed;
+  --ctk-blue-500: #158adc;
+  --ctk-blue-600: #006cb5;
+  --ctk-blue-700: #025a98;
+  --ctk-blue-800: #00497f;
+  --ctk-blue-900: #05375e;
+  --ctk-blue-950: #032440;
+
+  --ctk-green-50:  #f4fae4;
+  --ctk-green-100: #e9f5cc;
+  --ctk-green-200: #d6eca1;
+  --ctk-green-300: #c0e073;
+  --ctk-green-400: #a9d144;
+  --ctk-green-500: #96c11f;
+  --ctk-green-600: #759c03;
+  --ctk-green-700: #5e8103;
+  --ctk-green-800: #476501;
+  --ctk-green-900: #344d08;
+  --ctk-green-950: #1c2c01;
+
+  --ctk-neutral-0:   #ffffff;
+  --ctk-neutral-50:  #f8f8f7;
+  --ctk-neutral-100: #f0f0ef;
+  --ctk-neutral-200: #dfdfdf;
+  --ctk-neutral-300: #cfcfcf;
+  --ctk-neutral-400: #a4a4a4;
+  --ctk-neutral-500: #7c7c7c;
+  --ctk-neutral-600: #5d5d5d;
+  --ctk-neutral-700: #484848;
+  --ctk-neutral-800: #333333;
+  --ctk-neutral-900: #1e1e1e;
+  --ctk-neutral-950: #0e0e0e;
+
+  --ctk-red-50:  #fef2f1;
+  --ctk-red-100: #ffe2de;
+  --ctk-red-200: #ffcbc4;
+  --ctk-red-500: #ec4a42;
+  --ctk-red-600: #dc2627;
+  --ctk-red-700: #b91c1e;
+  --ctk-red-800: #991c1c;
+
+  --ctk-amber-50:  #fffaf4;
+  --ctk-amber-100: #fef0de;
+  --ctk-amber-200: #ffe1b9;
+  --ctk-amber-500: #efa208;
+  --ctk-amber-600: #c58507;
+  --ctk-amber-700: #9a6700;
+  --ctk-amber-800: #7c5202;
+
+  /* ---------- 3. Semantik: Farben (NUR diese in Komponenten verwenden) ---------- */
+  --ctk-color-primary:            var(--ctk-blue-600);
+  --ctk-color-primary-hover:      var(--ctk-blue-700);
+  --ctk-color-primary-active:     var(--ctk-blue-800);
+  --ctk-color-primary-subtle:     var(--ctk-blue-50);   /* Hintergrund für Chips, Highlights */
+  --ctk-color-primary-subtle-2:   var(--ctk-blue-100);
+  --ctk-color-on-primary:         #ffffff;
+
+  --ctk-color-accent:             var(--ctk-green-500); /* Flächen, Punkte, Linien, Icons ≥ 24px */
+  --ctk-color-accent-strong:      var(--ctk-green-800); /* grüner TEXT auf Hell */
+  --ctk-color-on-accent:          var(--ctk-blue-950);  /* Text AUF Grün */
+
+  --ctk-color-bg:                 var(--ctk-neutral-0);
+  --ctk-color-bg-subtle:          var(--ctk-neutral-50);
+  --ctk-color-bg-muted:           var(--ctk-neutral-100); /* = CI-Grau */
+  --ctk-color-bg-brand:           var(--ctk-blue-600);
+  --ctk-color-bg-brand-deep:      var(--ctk-blue-800);
+  --ctk-color-bg-tint:            var(--ctk-blue-50);
+
+  --ctk-color-text:               var(--ctk-neutral-900);
+  --ctk-color-text-secondary:     var(--ctk-neutral-600);
+  --ctk-color-text-disabled:      var(--ctk-neutral-500); /* NUR disabled/Placeholder – 4.2:1, kein Lesetext */
+  --ctk-color-text-brand:         var(--ctk-blue-600);
+  --ctk-color-text-heading:       var(--ctk-neutral-900);
+  --ctk-color-text-inverse:       #ffffff;
+  --ctk-color-text-inverse-muted: rgba(255, 255, 255, 0.78);
+  --ctk-color-link:               var(--ctk-blue-600);
+  --ctk-color-link-hover:         var(--ctk-blue-800);
+
+  --ctk-color-border:             var(--ctk-neutral-200);
+  --ctk-color-border-strong:      var(--ctk-neutral-300);
+  --ctk-color-border-input:       var(--ctk-neutral-400); /* 2.5:1 – bewusst; Label + Fokusring sichern Erkennbarkeit */
+  --ctk-color-border-brand:       var(--ctk-blue-600);
+  --ctk-color-focus-ring:         var(--ctk-blue-500);
+
+  --ctk-color-success:            var(--ctk-green-700);
+  --ctk-color-success-text:       var(--ctk-green-800);
+  --ctk-color-success-bg:         var(--ctk-green-50);
+  --ctk-color-success-border:     var(--ctk-green-200);
+  --ctk-color-info:               var(--ctk-blue-600);
+  --ctk-color-info-text:          var(--ctk-blue-700);
+  --ctk-color-info-bg:            var(--ctk-blue-50);
+  --ctk-color-info-border:        var(--ctk-blue-200);
+  --ctk-color-warning:            var(--ctk-amber-500);
+  --ctk-color-warning-text:       var(--ctk-amber-800);
+  --ctk-color-warning-bg:         var(--ctk-amber-50);
+  --ctk-color-warning-border:     var(--ctk-amber-200);
+  --ctk-color-danger:             var(--ctk-red-600);
+  --ctk-color-danger-text:        var(--ctk-red-700);
+  --ctk-color-danger-bg:          var(--ctk-red-50);
+  --ctk-color-danger-border:      var(--ctk-red-200);
+
+  /* ---------- 4. Markenverlauf ----------
+     135°, Blau → Marine, Mittelpunkt (Color-Hint) bei 66 %:
+     Blau dominiert, Marine kommt erst im letzten Drittel.
+     Die Stopp-Liste ist die exakte Übersetzung für SVG/PPTX/Figma. */
+  --ctk-gradient-brand: linear-gradient(135deg, #006cb5 0%, 66%, #00497f 100%);
+  --ctk-gradient-brand-stops: #006cb5 0%, #0064a9 40%, #005a9a 66%, #00518c 85%, #00497f 100%;
+  --ctk-gradient-brand-soft: linear-gradient(165deg, #eff8ff 0%, #f8fbfe 46%, #ffffff 100%); /* heller Hero-Hintergrund */
+
+  /* ---------- 5. Typografie ---------- */
+  --ctk-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --ctk-font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+
+  --ctk-weight-light:   300;
+  --ctk-weight-regular: 400;
+  --ctk-weight-bold:    700;  /* Es gibt KEIN 500/600/800. */
+
+  /* Marketing/Web-Skala (Major Third 1.25, Basis 16px, fluid ab Display) */
+  --ctk-text-display: clamp(2.75rem, 1.9rem + 3.6vw, 4.5rem); /* 44 → 72px */
+  --ctk-text-h1:      clamp(2.25rem, 1.7rem + 2.3vw, 3.5rem); /* 36 → 56px */
+  --ctk-text-h2:      clamp(1.75rem, 1.45rem + 1.3vw, 2.5rem);/* 28 → 40px */
+  --ctk-text-h3:      1.5rem;    /* 24px */
+  --ctk-text-h4:      1.25rem;   /* 20px */
+  --ctk-text-lead:    1.25rem;   /* 20px */
+  --ctk-text-body:    1rem;      /* 16px */
+  --ctk-text-small:   0.875rem;  /* 14px */
+  --ctk-text-caption: 0.75rem;   /* 12px */
+  --ctk-text-overline:0.75rem;   /* 12px, Versalien, +0.08em */
+
+  /* App-Skala (Software, dichter) */
+  --ctk-app-text-page-title: 1.25rem;   /* 20px */
+  --ctk-app-text-section:    1rem;      /* 16px */
+  --ctk-app-text-body:       0.875rem;  /* 14px */
+  --ctk-app-text-small:      0.8125rem; /* 13px */
+  --ctk-app-text-label:      0.75rem;   /* 12px */
+
+  --ctk-leading-tight:   1.1;   /* Display, H1 */
+  --ctk-leading-snug:    1.25;  /* H2–H4 */
+  --ctk-leading-normal:  1.5;   /* Fließtext */
+  --ctk-leading-relaxed: 1.65;  /* Lead, lange Texte */
+
+  --ctk-tracking-display: -0.025em;
+  --ctk-tracking-heading: -0.015em;
+  --ctk-tracking-body:    0;
+  --ctk-tracking-caps:    0.08em;
+
+  --ctk-measure: 68ch;  /* max. Zeilenlänge Fließtext */
+
+  /* ---------- 6. Abstand (4px-Raster) ---------- */
+  --ctk-space-0:  0;
+  --ctk-space-1:  0.25rem;  /*  4 */
+  --ctk-space-2:  0.5rem;   /*  8 */
+  --ctk-space-3:  0.75rem;  /* 12 */
+  --ctk-space-4:  1rem;     /* 16 */
+  --ctk-space-5:  1.25rem;  /* 20 */
+  --ctk-space-6:  1.5rem;   /* 24 */
+  --ctk-space-8:  2rem;     /* 32 */
+  --ctk-space-10: 2.5rem;   /* 40 */
+  --ctk-space-12: 3rem;     /* 48 */
+  --ctk-space-16: 4rem;     /* 64 */
+  --ctk-space-20: 5rem;     /* 80 */
+  --ctk-space-24: 6rem;     /* 96 */
+  --ctk-space-32: 8rem;     /* 128 */
+
+  --ctk-section-y: clamp(4rem, 2.5rem + 6vw, 8rem); /* vertikaler Sektionsabstand Web */
+  --ctk-container: 1200px;
+  --ctk-container-narrow: 760px;
+  --ctk-gutter: clamp(1rem, 0.5rem + 2vw, 2rem);
+
+  /* ---------- 7. Radien ---------- */
+  --ctk-radius-xs:   2px;    /* Checkbox, Tag-Ecken */
+  --ctk-radius-sm:   4px;    /* Badge */
+  --ctk-radius-md:   8px;    /* Button, Input, Select */
+  --ctk-radius-lg:   12px;   /* Card, Dialog, Panel */
+  --ctk-radius-xl:   20px;   /* Hero-Visuals, große Marketing-Karten */
+  --ctk-radius-full: 999px;  /* Pills, Avatare */
+
+  /* ---------- 8. Schatten (blau getönt, nie grau/schwarz) ---------- */
+  --ctk-shadow-xs: 0 1px 2px rgba(6, 48, 79, 0.06);
+  --ctk-shadow-sm: 0 1px 3px rgba(6, 48, 79, 0.08), 0 1px 2px rgba(6, 48, 79, 0.04);
+  --ctk-shadow-md: 0 14px 34px -14px rgba(6, 48, 79, 0.22);
+  --ctk-shadow-lg: 0 26px 60px -30px rgba(6, 48, 79, 0.45);
+  --ctk-shadow-xl: 0 32px 80px -32px rgba(6, 48, 79, 0.30);
+  --ctk-shadow-focus: 0 0 0 3px rgba(21, 138, 220, 0.35);
+
+  /* ---------- 9. Bewegung ---------- */
+  --ctk-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ctk-ease-out:      cubic-bezier(0, 0, 0.2, 1);
+  --ctk-duration-fast: 120ms;  /* Hover, Farbe */
+  --ctk-duration-base: 200ms;  /* Aufklappen, Overlays */
+  --ctk-duration-slow: 320ms;  /* Seitenelemente einblenden */
+
+  /* ---------- 10. Ebenen ---------- */
+  --ctk-z-dropdown: 1000;
+  --ctk-z-sticky:   1100;
+  --ctk-z-overlay:  1200;
+  --ctk-z-modal:    1300;
+  --ctk-z-toast:    1400;
+
+  /* ---------- 11. Modulfarben (Business Hub) ----------
+     NUR zur Kennzeichnung von Modulen: Icon, Icon-Fläche, Kartenrahmen, Modul-Badge,
+     Diagrammreihe pro Modul. NIE für Buttons, große Flächen, Headlines, Marketing-Bühnen.
+     Formel: icon = oklch(.52 .13 H) · bg = oklch(.955 .038 H) · border = oklch(.91 .032 H)
+             muted = oklch(.82 .07 H) · text = oklch(.46 .115 H) – Ticket nutzt die Blau-Skala. */
+  /* Ticket (= CTK-Blau) */
+  --ctk-module-ticket-icon: #006cb5;  --ctk-module-ticket-bg: #eff8ff;  --ctk-module-ticket-border: #dcf0ff;  --ctk-module-ticket-muted: #8bc8fa;  --ctk-module-ticket-text: #025a98;
+  /* Anwesenheit · H220 */
+  --ctk-module-anwesenheit-icon: #03758e;  --ctk-module-anwesenheit-bg: #dbf5fe;  --ctk-module-anwesenheit-border: #cbe7f0;  --ctk-module-anwesenheit-muted: #90cfe4;  --ctk-module-anwesenheit-text: #036278;
+  /* Inventar · H195 */
+  --ctk-module-inventar-icon: #047879;  --ctk-module-inventar-bg: #d4f9f8;  --ctk-module-inventar-border: #cae8e8;  --ctk-module-inventar-muted: #8dd3d2;  --ctk-module-inventar-text: #066565;
+  /* Wartung · H165 */
+  --ctk-module-wartung-icon: #057c59;  --ctk-module-wartung-bg: #daf9ea;  --ctk-module-wartung-border: #cfe8dc;  --ctk-module-wartung-muted: #99d3b9;  --ctk-module-wartung-text: #00694a;
+  /* Projekt · H128 */
+  --ctk-module-projekt-icon: #53760e;  --ctk-module-projekt-bg: #e9f6db;  --ctk-module-projekt-border: #dbe6cf;  --ctk-module-projekt-muted: #b7cd9d;  --ctk-module-projekt-text: #45630a;
+  /* Besprechung · H95 */
+  --ctk-module-besprechung-icon: #7c6702;  --ctk-module-besprechung-bg: #f8f0d4;  --ctk-module-besprechung-border: #e8e2ca;  --ctk-module-besprechung-muted: #d2c490;  --ctk-module-besprechung-text: #695700;
+  /* Vertrag · H60 */
+  --ctk-module-vertrag-icon: #9a5500;  --ctk-module-vertrag-bg: #ffecde;  --ctk-module-vertrag-border: #f2ddcd;  --ctk-module-vertrag-muted: #e7ba97;  --ctk-module-vertrag-text: #824702;
+  /* Abrechnung · H10 (bewusst nicht Fehlerrot H27) */
+  --ctk-module-abrechnung-icon: #a54358;  --ctk-module-abrechnung-bg: #feeaed;  --ctk-module-abrechnung-border: #f6d9dc;  --ctk-module-abrechnung-muted: #edb2ba;  --ctk-module-abrechnung-text: #8c3849;
+  /* Kundenportal · H335 */
+  --ctk-module-kundenportal-icon: #954886;  --ctk-module-kundenportal-bg: #ffe9f9;  --ctk-module-kundenportal-border: #f0daea;  --ctk-module-kundenportal-muted: #e2b4d6;  --ctk-module-kundenportal-text: #7e3c71;
+  /* ERP-Integration · H290 */
+  --ctk-module-erp-icon: #6959ae;  --ctk-module-erp-bg: #efeefe;  --ctk-module-erp-border: #e0def6;  --ctk-module-erp-muted: #c3bdef;  --ctk-module-erp-text: #584a93;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --ctk-duration-fast: 0ms; --ctk-duration-base: 0ms; --ctk-duration-slow: 0ms; }
+}
+
+/* --- Basis-Utilities (optional einbinden) ------------------------------- */
+.ctk-bg-gradient { background: var(--ctk-gradient-brand); color: var(--ctk-color-text-inverse); }
+.ctk-overline {
+  font-size: var(--ctk-text-overline); font-weight: var(--ctk-weight-bold);
+  letter-spacing: var(--ctk-tracking-caps); text-transform: uppercase; color: var(--ctk-color-text-brand);
+}
+
+/* --- Modul-Kontext: setzt lokale Variablen, Komponenten nutzen nur --ctk-mod-* --- */
+.ctk-module--ticket { --ctk-mod-icon: var(--ctk-module-ticket-icon); --ctk-mod-bg: var(--ctk-module-ticket-bg); --ctk-mod-border: var(--ctk-module-ticket-border); --ctk-mod-muted: var(--ctk-module-ticket-muted); --ctk-mod-text: var(--ctk-module-ticket-text); }
+.ctk-module--anwesenheit { --ctk-mod-icon: var(--ctk-module-anwesenheit-icon); --ctk-mod-bg: var(--ctk-module-anwesenheit-bg); --ctk-mod-border: var(--ctk-module-anwesenheit-border); --ctk-mod-muted: var(--ctk-module-anwesenheit-muted); --ctk-mod-text: var(--ctk-module-anwesenheit-text); }
+.ctk-module--inventar { --ctk-mod-icon: var(--ctk-module-inventar-icon); --ctk-mod-bg: var(--ctk-module-inventar-bg); --ctk-mod-border: var(--ctk-module-inventar-border); --ctk-mod-muted: var(--ctk-module-inventar-muted); --ctk-mod-text: var(--ctk-module-inventar-text); }
+.ctk-module--wartung { --ctk-mod-icon: var(--ctk-module-wartung-icon); --ctk-mod-bg: var(--ctk-module-wartung-bg); --ctk-mod-border: var(--ctk-module-wartung-border); --ctk-mod-muted: var(--ctk-module-wartung-muted); --ctk-mod-text: var(--ctk-module-wartung-text); }
+.ctk-module--projekt { --ctk-mod-icon: var(--ctk-module-projekt-icon); --ctk-mod-bg: var(--ctk-module-projekt-bg); --ctk-mod-border: var(--ctk-module-projekt-border); --ctk-mod-muted: var(--ctk-module-projekt-muted); --ctk-mod-text: var(--ctk-module-projekt-text); }
+.ctk-module--besprechung { --ctk-mod-icon: var(--ctk-module-besprechung-icon); --ctk-mod-bg: var(--ctk-module-besprechung-bg); --ctk-mod-border: var(--ctk-module-besprechung-border); --ctk-mod-muted: var(--ctk-module-besprechung-muted); --ctk-mod-text: var(--ctk-module-besprechung-text); }
+.ctk-module--vertrag { --ctk-mod-icon: var(--ctk-module-vertrag-icon); --ctk-mod-bg: var(--ctk-module-vertrag-bg); --ctk-mod-border: var(--ctk-module-vertrag-border); --ctk-mod-muted: var(--ctk-module-vertrag-muted); --ctk-mod-text: var(--ctk-module-vertrag-text); }
+.ctk-module--abrechnung { --ctk-mod-icon: var(--ctk-module-abrechnung-icon); --ctk-mod-bg: var(--ctk-module-abrechnung-bg); --ctk-mod-border: var(--ctk-module-abrechnung-border); --ctk-mod-muted: var(--ctk-module-abrechnung-muted); --ctk-mod-text: var(--ctk-module-abrechnung-text); }
+.ctk-module--kundenportal { --ctk-mod-icon: var(--ctk-module-kundenportal-icon); --ctk-mod-bg: var(--ctk-module-kundenportal-bg); --ctk-mod-border: var(--ctk-module-kundenportal-border); --ctk-mod-muted: var(--ctk-module-kundenportal-muted); --ctk-mod-text: var(--ctk-module-kundenportal-text); }
+.ctk-module--erp { --ctk-mod-icon: var(--ctk-module-erp-icon); --ctk-mod-bg: var(--ctk-module-erp-bg); --ctk-mod-border: var(--ctk-module-erp-border); --ctk-mod-muted: var(--ctk-module-erp-muted); --ctk-mod-text: var(--ctk-module-erp-text); }
+
+/* Modulkarte (Dashboard, Landingpage „Module“, Lizenz-/Modulauswahl) */
+.ctk-module-card {
+  position: relative; display: block;
+  background: var(--ctk-color-bg); border: 1px solid var(--ctk-mod-border, var(--ctk-color-border));
+  border-radius: var(--ctk-radius-lg); padding: var(--ctk-space-6);
+  color: var(--ctk-color-text); text-decoration: none;
+  transition: box-shadow var(--ctk-duration-fast) var(--ctk-ease-standard), transform var(--ctk-duration-fast) var(--ctk-ease-standard);
+}
+a.ctk-module-card:hover, button.ctk-module-card:hover { box-shadow: var(--ctk-shadow-md); transform: translateY(-2px); }
+.ctk-module-card__icon {
+  width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center;
+  background: var(--ctk-mod-bg); color: var(--ctk-mod-icon); margin-bottom: var(--ctk-space-5);
+}
+.ctk-module-card__icon svg, .ctk-module-card__icon .pi { width: 20px; height: 20px; font-size: 1.125rem; }
+.ctk-module-card__title { margin: 0 0 var(--ctk-space-2); font-size: 1.0625rem; font-weight: var(--ctk-weight-bold); line-height: 1.3; }
+.ctk-module-card__text { margin: 0; font-size: var(--ctk-text-small); line-height: 1.55; color: var(--ctk-color-text-secondary); }
+.ctk-module-card__add {
+  position: absolute; top: var(--ctk-space-6); right: var(--ctk-space-6);
+  width: 28px; height: 28px; border-radius: var(--ctk-radius-full);
+  border: 1px dashed var(--ctk-mod-muted); background: transparent; color: var(--ctk-mod-icon);
+  display: grid; place-items: center; cursor: pointer;
+}
+.ctk-module-card__add:hover { border-style: solid; background: var(--ctk-mod-bg); }
+.ctk-module-badge {
+  display: inline-flex; align-items: center; min-height: 24px; padding: 3px 10px; line-height: 1.35; margin-top: var(--ctk-space-4);
+  border-radius: var(--ctk-radius-full); font-size: var(--ctk-text-caption); font-weight: var(--ctk-weight-bold);
+  background: var(--ctk-mod-bg); color: var(--ctk-mod-text);
+}
+/* Hinweis-/Abhängigkeits-Badges („Setzt … voraus“) sind neutral, nicht in Modulfarbe */
+.ctk-module-badge--note { background: var(--ctk-neutral-100); color: var(--ctk-neutral-700); }

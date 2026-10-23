@@ -40,16 +40,13 @@ const modules = [
 
 <section id="winline" class="bg-background py-24" data-reveal>
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <p class="flex items-center gap-2 text-sm font-semibold tracking-[1.4px] text-brand-dark uppercase">
-      <span class="h-[21px] w-[5px] rounded-[4px] bg-brand"></span>
-      Die technische Basis
-    </p>
-    <h2 class="mt-2 text-4xl leading-[1.2] font-bold tracking-[-0.88px] text-foreground sm:text-[44px]">
+    <p class="ctk-overline-blue">Die technische Basis</p>
+    <h2 class="ctk-h2 mt-2 text-foreground">
       mesonic WinLine
     </h2>
-    <p class="mt-4 max-w-2xl text-lg leading-[1.6] text-muted">
+    <p class="ctk-lead mt-4 max-w-2xl text-muted">
       Seit vielen Jahren setzen wir erfolgreich auf die etablierte ERP-Lösung
-      <strong class="font-semibold text-foreground">mesonic WinLine</strong>. Die Software vereint alle zentralen
+      <strong class="font-bold text-foreground">mesonic WinLine</strong>. Die Software vereint alle zentralen
       Unternehmensbereiche in einem einzigen, modular erweiterbaren System.
     </p>
 
@@ -58,7 +55,7 @@ const modules = [
         id="tech-slider-prev"
         type="button"
         aria-label="Vorherige Module"
-        class="flex size-9 items-center justify-center rounded-full bg-button text-white transition-opacity hover:opacity-90 disabled:pointer-events-none disabled:opacity-30"
+        class="flex size-11 items-center justify-center rounded-full bg-button text-white transition-colors hover:bg-button-hover disabled:pointer-events-none disabled:opacity-30"
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4">
           <path d="M15 18l-6-6 6-6" />
@@ -68,7 +65,7 @@ const modules = [
         id="tech-slider-next"
         type="button"
         aria-label="Nächste Module"
-        class="flex size-9 items-center justify-center rounded-full bg-button text-white transition-opacity hover:opacity-90 disabled:pointer-events-none disabled:opacity-30"
+        class="flex size-11 items-center justify-center rounded-full bg-button text-white transition-colors hover:bg-button-hover disabled:pointer-events-none disabled:opacity-30"
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4">
           <path d="M9 18l6-6-6-6" />
@@ -82,38 +79,37 @@ const modules = [
     >
       {
         modules.map((m) => (
-          <div class="shrink-0 snap-start basis-full rounded-xl border border-[#a6cbe3] bg-[#f2f8fb] p-6 shadow-[0px_8px_30px_0px_rgba(148,163,184,0.06),0px_1px_3px_0px_rgba(0,0,0,0.02)] backdrop-blur-[6px] md:basis-[calc(50%-8px)]">
+          <div class="shrink-0 snap-start basis-full ctk-card-hover rounded-lg border border-border bg-white p-6 md:basis-[calc(50%-8px)]">
             <img src={m.icon} alt="" class="size-8 -scale-y-100" />
-            <h3 class="mt-3 text-base font-bold tracking-[-0.4px] text-foreground">{m.title}</h3>
-            <p class="mt-1.5 text-sm leading-[1.6] break-words text-muted">{m.body}</p>
+            <h3 class="mt-3 text-base font-bold text-foreground">{m.title}</h3>
+            <p class="mt-1.5 text-base break-words text-muted">{m.body}</p>
           </div>
         ))
       }
     </div>
 
     <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
-      <div class="flex flex-col items-center gap-6 rounded-xl border border-[#38bdf8] bg-[#e0f2fe] p-6 text-center shadow-[0px_8px_30px_0px_rgba(148,163,184,0.06),0px_1px_3px_0px_rgba(0,0,0,0.02)] backdrop-blur-[6px] sm:flex-row sm:text-left">
+      <div class="flex flex-col items-center gap-6 ctk-card-hover rounded-lg border border-blue-200 bg-blue-50 p-6 text-center sm:flex-row sm:text-left">
         <img src="/assets/technical/mesonic-logo.png" alt="mesonic" class="h-[43px] w-auto shrink-0" />
         <div class="flex items-center gap-3">
           <img src="/assets/technical/icon-check-badge.svg" alt="" class="size-7 shrink-0 -scale-y-100" />
           <p class="text-sm leading-snug">
-            <span class="block font-semibold text-foreground">Zertifizierter Partner</span>
+            <span class="block font-bold text-foreground">Zertifizierter Partner</span>
             <span class="text-muted">Erfahrene mesonic-Experten</span>
           </p>
         </div>
       </div>
 
       <div
-        class="relative overflow-hidden rounded-xl p-8"
-        style="background-image: linear-gradient(127.26deg, #006cb5 0%, #006cb5 34%, #004b7c 100%);"
+        class="relative overflow-hidden rounded-lg bg-brand-dark p-8"
       >
         <img
           src="/assets/technical/icon-gear-callout.svg"
           alt=""
           class="pointer-events-none absolute right-[-20px] bottom-[-28px] size-32 -scale-y-100"
         />
-        <h3 class="relative text-xl font-bold tracking-[-0.4px] text-white">Individuelle Anpassung</h3>
-        <p class="relative mt-2 max-w-md text-sm leading-[1.6] text-white/85">
+        <h3 class="ctk-h3 relative text-white">Individuelle Anpassung</h3>
+        <p class="relative mt-2 max-w-md text-base text-white/80">
           Als zertifizierter Partner passen wir alle Module von mesonic WinLine exakt an Ihre spezifischen
           Branchenanforderungen an.
         </p>
