@@ -2,6 +2,8 @@
 const BOOKING_URL =
   'https://bookings.cloud.microsoft/book/TerminbuchungBeratungsgesprch@ctk-gmbh.de/?ismsaljsauthenabled=true';
 
+const illustrations: Record<number, string> = {"1": "<svg viewBox=\"0 0 96 96\" fill=\"none\" aria-hidden=\"true\" class=\"size-full\"><rect x=\"22\" y=\"14\" width=\"46\" height=\"60\" rx=\"6\" fill=\"#fff\" stroke=\"var(--ctk-blue-200)\" stroke-width=\"2\"/><rect class=\"pa-line\" style=\"--d:.1s\" x=\"30\" y=\"26\" width=\"30\" height=\"4\" rx=\"2\" fill=\"var(--ctk-blue-200)\"/><rect class=\"pa-line\" style=\"--d:.2s\" x=\"30\" y=\"38\" width=\"22\" height=\"4\" rx=\"2\" fill=\"var(--ctk-blue-200)\"/><rect class=\"pa-line\" style=\"--d:.3s\" x=\"30\" y=\"50\" width=\"26\" height=\"4\" rx=\"2\" fill=\"var(--ctk-blue-200)\"/><g class=\"pa-lens\"><circle cx=\"60\" cy=\"60\" r=\"15\" fill=\"rgba(0,108,181,.08)\" stroke=\"var(--ctk-blue-600)\" stroke-width=\"4\"/><path d=\"M71 71l12 12\" stroke=\"var(--ctk-blue-600)\" stroke-width=\"5\" stroke-linecap=\"round\"/></g><circle class=\"pa-pop\" style=\"--d:1s\" cx=\"60\" cy=\"60\" r=\"5\" fill=\"var(--ctk-green-500)\"/></svg>", "2": "<svg viewBox=\"0 0 96 96\" fill=\"none\" aria-hidden=\"true\" class=\"size-full\"><path class=\"pa-draw\" style=\"--d:.1s\" d=\"M24 28h26v40h22\" stroke=\"var(--ctk-blue-300)\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" pathLength=\"1\"/><path class=\"pa-draw\" style=\"--d:.4s\" d=\"M50 48h22\" stroke=\"var(--ctk-blue-300)\" stroke-width=\"3\" stroke-linecap=\"round\" pathLength=\"1\"/><rect class=\"pa-pop\" style=\"--d:0s\" x=\"10\" y=\"18\" width=\"24\" height=\"20\" rx=\"5\" fill=\"var(--ctk-blue-600)\"/><rect class=\"pa-pop\" style=\"--d:.6s\" x=\"62\" y=\"36\" width=\"24\" height=\"20\" rx=\"5\" fill=\"var(--ctk-blue-600)\"/><rect class=\"pa-pop\" style=\"--d:.8s\" x=\"62\" y=\"58\" width=\"24\" height=\"20\" rx=\"5\" fill=\"var(--ctk-green-500)\"/></svg>", "3": "<svg viewBox=\"0 0 96 96\" fill=\"none\" aria-hidden=\"true\" class=\"size-full\"><rect x=\"46\" y=\"16\" width=\"38\" height=\"64\" rx=\"6\" fill=\"#fff\" stroke=\"var(--ctk-blue-200)\" stroke-width=\"2\"/><rect x=\"52\" y=\"24\" width=\"26\" height=\"10\" rx=\"3\" fill=\"var(--ctk-blue-100)\"/><rect x=\"52\" y=\"40\" width=\"26\" height=\"10\" rx=\"3\" fill=\"var(--ctk-blue-100)\"/><rect x=\"52\" y=\"56\" width=\"26\" height=\"10\" rx=\"3\" fill=\"var(--ctk-blue-100)\"/><rect class=\"pa-slide\" style=\"--d:.1s;--y:0\" x=\"10\" y=\"25\" width=\"20\" height=\"8\" rx=\"3\" fill=\"var(--ctk-blue-600)\"/><rect class=\"pa-slide\" style=\"--d:.45s\" x=\"10\" y=\"41\" width=\"20\" height=\"8\" rx=\"3\" fill=\"var(--ctk-blue-600)\"/><rect class=\"pa-slide\" style=\"--d:.8s\" x=\"10\" y=\"57\" width=\"20\" height=\"8\" rx=\"3\" fill=\"var(--ctk-blue-600)\"/><circle class=\"pa-pop\" style=\"--d:1.4s\" cx=\"78\" cy=\"78\" r=\"10\" fill=\"var(--ctk-green-500)\"/><path class=\"pa-draw\" style=\"--d:1.6s\" d=\"M73 78l4 4 7-8\" stroke=\"#032440\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" pathLength=\"1\"/></svg>", "4": "<svg viewBox=\"0 0 96 96\" fill=\"none\" aria-hidden=\"true\" class=\"size-full\"><path d=\"M14 80h68\" stroke=\"var(--ctk-blue-200)\" stroke-width=\"2\" stroke-linecap=\"round\"/><rect class=\"pa-grow\" style=\"--d:.1s\" x=\"18\" y=\"56\" width=\"14\" height=\"24\" rx=\"3\" fill=\"var(--ctk-blue-200)\"/><rect class=\"pa-grow\" style=\"--d:.3s\" x=\"40\" y=\"44\" width=\"14\" height=\"36\" rx=\"3\" fill=\"var(--ctk-blue-400)\"/><rect class=\"pa-grow\" style=\"--d:.5s\" x=\"62\" y=\"28\" width=\"14\" height=\"52\" rx=\"3\" fill=\"var(--ctk-blue-600)\"/><path class=\"pa-draw\" style=\"--d:.8s\" d=\"M16 44l24-14 20 6 22-22\" stroke=\"var(--ctk-green-500)\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" pathLength=\"1\"/><circle class=\"pa-pop\" style=\"--d:1.5s\" cx=\"82\" cy=\"14\" r=\"5\" fill=\"var(--ctk-green-500)\"/></svg>", "5": "<svg viewBox=\"0 0 96 96\" fill=\"none\" aria-hidden=\"true\" class=\"size-full\"><path class=\"pa-draw\" style=\"--d:0s\" d=\"M48 12l30 10v22c0 20-13 34-30 40-17-6-30-20-30-40V22z\" fill=\"rgba(0,108,181,.08)\" stroke=\"var(--ctk-blue-600)\" stroke-width=\"4\" stroke-linejoin=\"round\" pathLength=\"1\"/><path class=\"pa-draw\" style=\"--d:.8s\" d=\"M35 47l9 9 17-19\" stroke=\"var(--ctk-green-500)\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" pathLength=\"1\"/><circle class=\"pa-pop\" style=\"--d:1.3s\" cx=\"78\" cy=\"14\" r=\"5\" fill=\"var(--ctk-green-500)\"/></svg>"};
+
 const steps = [
   {
     n: 1,
@@ -31,11 +33,11 @@ const steps = [
 ];
 ---
 
-<section id="vorgehen" class="relative overflow-hidden bg-blue-50 py-20 md:py-24">
+<section id="vorgehen" class="relative overflow-hidden bg-blue-50 ctk-section">
   <div class="relative mx-auto max-w-[1200px] px-6 lg:px-8">
     <div class="text-center" data-reveal>
-      <p class="ctk-overline-blue">Der Weg zum Erfolg</p>
-      <h2 class="ctk-h2 mt-3 pb-4 text-foreground">
+      <span class="ctk-pill ctk-pill--tint"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>Der Weg zum Erfolg</span>
+      <h2 class="ctk-h2 mt-4 pb-4 text-foreground">
         Unser Vorgehen
       </h2>
     </div>
@@ -46,7 +48,8 @@ const steps = [
       <ol class="flex flex-col gap-8 md:gap-10">
         {
           steps.map((step, i) => (
-            <li class="md:grid md:grid-cols-2 md:gap-x-20">
+            <li class="relative md:grid md:grid-cols-2 md:gap-x-20">
+              <span class="absolute top-9 left-1/2 hidden size-3 -translate-x-1/2 rounded-full bg-accent ring-4 ring-blue-50 md:block" aria-hidden="true"></span>
               <div
                 class:list={[
                   'ctk-card-hover rounded-lg border border-border bg-white p-6 sm:p-8',
@@ -55,7 +58,8 @@ const steps = [
                 data-reveal
                 style={`transition-delay: ${i * 150}ms;`}
               >
-                <div class="flex items-center gap-3">
+                <div class="pa h-32 w-full rounded-lg bg-blue-50 p-3" set:html={illustrations[step.n]} />
+                <div class="mt-5 flex items-center gap-3">
                   <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-brand text-lg font-bold text-white">
                     {step.n}
                   </span>
@@ -81,3 +85,22 @@ const steps = [
     </div>
   </div>
 </section>
+
+<style is:global>
+  /* Schritt-Illustrationen: flache Blau-Skala + Gruen-Akzent, einmalig beim Einblenden */
+  @media (prefers-reduced-motion: no-preference) {
+    .pa svg * { transform-box: fill-box; }
+    .is-visible .pa-draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: pa-draw .7s var(--ctk-ease-out, ease-out) var(--d, 0s) forwards; }
+    .is-visible .pa-pop { opacity: 0; transform-origin: center; animation: pa-pop .4s var(--ctk-ease-out, ease-out) var(--d, 0s) forwards; }
+    .is-visible .pa-grow { transform-origin: center bottom; transform: scaleY(0); animation: pa-grow .5s var(--ctk-ease-out, ease-out) var(--d, 0s) forwards; }
+    .is-visible .pa-slide { opacity: 0; animation: pa-slide .6s var(--ctk-ease-out, ease-out) var(--d, 0s) forwards; }
+    .is-visible .pa-line { transform-origin: left center; transform: scaleX(0); animation: pa-line .4s var(--ctk-ease-out, ease-out) var(--d, 0s) forwards; }
+    .is-visible .pa-lens { animation: pa-lens 1s var(--ctk-ease-out, ease-out) .3s both; }
+  }
+  @keyframes pa-draw { to { stroke-dashoffset: 0; } }
+  @keyframes pa-pop { 0% { opacity: 0; transform: scale(.4); } 100% { opacity: 1; transform: scale(1); } }
+  @keyframes pa-grow { to { transform: scaleY(1); } }
+  @keyframes pa-slide { 0% { opacity: 0; transform: translateX(-4px); } 40% { opacity: 1; } 100% { opacity: 1; transform: translateX(42px); } }
+  @keyframes pa-line { to { transform: scaleX(1); } }
+  @keyframes pa-lens { 0% { transform: translate(-22px, -26px); } 100% { transform: translate(0, 0); } }
+</style>

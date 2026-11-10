@@ -7,7 +7,7 @@
   --color-foreground: var(--ctk-color-text);
   --color-muted: var(--ctk-color-text-secondary);
   --color-border: var(--ctk-color-border);
-  --color-surface: var(--ctk-color-bg-muted);
+  --color-surface: #f4f7fa; /* kühles Sektionsband (ctk-landingpage), statt warmem CI-Grau */
   --color-brand: var(--ctk-color-primary);
   --color-brand-dark: var(--ctk-blue-800);
   --color-button: var(--ctk-color-primary);
@@ -118,3 +118,22 @@ body {
   border-color: var(--ctk-color-danger);
   box-shadow: 0 14px 34px -14px rgba(220, 38, 39, 0.35);
 }
+
+/* Sektionsabstand (ctk-landingpage): clamp(52px, 6.5vw, 88px) */
+.ctk-section { padding-block: clamp(52px, 6.5vw, 88px); }
+
+/* Tagline-Pill mit Icon, in jeder Sektion ueber der Ueberschrift */
+.ctk-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--ctk-color-primary-subtle);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ctk-color-primary);
+}
+.ctk-pill--tint { background: var(--ctk-blue-100); }

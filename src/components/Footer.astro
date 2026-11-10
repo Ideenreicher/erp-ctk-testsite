@@ -1,105 +1,47 @@
 ---
-const columns = [
-  {
-    title: 'Navigation',
-    links: [
-      { label: 'Herausforderungen', href: '#herausforderungen' },
-      { label: 'Vorteile', href: '#vorteile' },
-      { label: 'Unser Vorgehen', href: '#vorgehen' },
-      { label: 'mesonic WinLine', href: '#winline' },
-    ],
-  },
-  {
-    title: 'Über CTK',
-    links: [
-      { label: 'Warum CTK', href: '#warum-ctk' },
-      { label: 'Beratung vereinbaren', href: '#kontakt' },
-    ],
-  },
-  {
-    title: 'Rechtliches',
-    links: [
-      { label: 'Impressum', href: 'https://www.ctk-gmbh.de/impressum' },
-      { label: 'Datenschutz', href: 'https://www.ctk-gmbh.de/datenschutz' },
-      { label: 'Cookie-Einstellungen', href: '#', id: 'footer-cookie-settings' },
-    ],
-  },
+const links = [
+  { label: 'Herausforderungen', href: '#herausforderungen' },
+  { label: 'Vorteile', href: '#vorteile' },
+  { label: 'Unser Vorgehen', href: '#vorgehen' },
+  { label: 'mesonic WinLine', href: '#winline' },
+  { label: 'Warum CTK', href: '#warum-ctk' },
+  { label: 'Kontakt', href: '#kontakt' },
+  { label: 'Impressum', href: 'https://www.ctk-gmbh.de/impressum', external: true },
+  { label: 'Datenschutz', href: 'https://www.ctk-gmbh.de/datenschutz', external: true },
+  { label: 'Cookie-Einstellungen', href: '#', id: 'footer-cookie-settings' },
 ];
 ---
 
-<footer
-  class="relative overflow-hidden bg-brand-dark pt-16 pb-8"
-  data-reveal
->
-  <!-- Dots-pattern (real Figma vector asset, node 1846:1319/1846:1320) -->
-  <div
-    class="pointer-events-none absolute left-0 right-0 overflow-hidden"
-    style="top: calc(-19.18% - 1.19px); bottom: calc(-119.15% - 1.19px);"
-    aria-hidden="true"
-  >
-    <div
-      class="absolute opacity-[0.14]"
-      style="
-        left: -202.24px;
-        top: -588.75px;
-        width: 2576.714px;
-        height: 1721.848px;
-        mask-image: url('/assets/footer/footer-dots-mask.svg');
-        mask-repeat: no-repeat;
-        mask-position: 202.235px 588.753px;
-        mask-size: 1920px 959.722px;
-        -webkit-mask-image: url('/assets/footer/footer-dots-mask.svg');
-        -webkit-mask-repeat: no-repeat;
-        -webkit-mask-position: 202.235px 588.753px;
-        -webkit-mask-size: 1920px 959.722px;
-      "
-    >
-      <img
-        src="/assets/footer/footer-dots-pattern.svg"
-        alt=""
-        class="absolute inset-0 block h-full w-full max-w-none"
-      />
-    </div>
-  </div>
-
-  <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
-    <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-12">
-      <div class="max-w-xs">
-        <img src="/assets/footer/ctk-logo-white.svg" alt="CTK GmbH" class="h-[45px] w-auto" />
-        <p class="mt-3 text-lg font-bold tracking-[0.08em] text-white uppercase">
-          Business Software
-        </p>
-        <p class="mt-4 text-sm text-white/80">
-          Wir begleiten mittelständische Unternehmen bei der Digitalisierung ihrer Geschäftsprozesse.
-        </p>
-      </div>
-
-      {
-        columns.map((col) => (
-          <div>
-            <h3 class="text-xs font-bold tracking-[0.08em] text-green-400 uppercase">{col.title}</h3>
-            <ul class="mt-4 space-y-3">
-              {col.links.map((link) => (
-                <li>
-                  <a
-                    href={link.href}
-                    id={link.id}
-                    class="text-sm text-white/80 transition-colors hover:text-white hover:underline"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))
-      }
+<footer class="w-full border-t border-white/[0.18] bg-brand-dark px-5 py-10 sm:px-8" data-reveal>
+  <div class="mx-auto flex max-w-[1200px] flex-col gap-[26px]">
+    <div class="flex flex-wrap items-center justify-between gap-x-8 gap-y-5">
+      <img src="/assets/footer/ctk-logo-white.svg" alt="CTK GmbH" class="block h-8 w-auto" />
+      <nav class="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm">
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              id={link.id}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+              class="inline-flex min-h-11 items-center text-white/90 transition-colors hover:text-white hover:underline"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
     </div>
 
-    <div class="mt-12 border-t border-white/15 pt-8 text-center text-[13px] text-white/80">
-      © {new Date().getFullYear()} CTK GmbH. Alle Rechte vorbehalten. mesonic WinLine ist ein eingetragenes
-      Warenzeichen der mesonic GmbH.
-    </div>
+    <div class="h-px bg-white/10"></div>
+
+    <p class="text-[13px] leading-normal text-white/90">
+      mesonic WinLine ist ein eingetragenes Warenzeichen der mesonic GmbH.
+    </p>
+
+    <p class="text-[13px] leading-normal text-white/90">
+      © {new Date().getFullYear()} CTK GmbH. Alle Rechte vorbehalten.
+    </p>
   </div>
 </footer>
 
