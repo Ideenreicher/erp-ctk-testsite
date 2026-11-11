@@ -1,4 +1,8 @@
-name: Build & Deploy
+name: Build & Deploy (Plesk)
+
+# Baut die Astro-Seite, schreibt alle absoluten Pfade auf den Unterordner
+# /bs um (Seite liegt unter https://ctk.gmbh/bs/) und pusht den
+# fertigen Build in den Branch "deploy". Plesk zieht diesen Branch per Webhook.
 
 on:
   push:
@@ -15,19 +19,59 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      BASE_PATH: /bs
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - run: npm ci
       - run: npm run build
 
-      # Pusht nur den fertigen Build (dist/) in den Branch "deploy".
-      # Plesk zieht diesen Branch per Webhook und stellt ihn ins Document Root.
+      - name: Pfade auf Unterordner umschreiben
+        run: |
+          cat > "$RUNNER_TEMP/rebase-paths.mjs" <<'EOF'
+          import { readdir, readFile, writeFile } from 'node:fs/promises';
+          import { join, extname } from 'node:path';
+
+          const [dir, rawBase] = process.argv.slice(2);
+          const base = '/' + rawBase.replace(/^\/+|\/+$/g, '');
+          const notBase = `(?!\\/)(?!${base.slice(1)}(?:\\/|["'?#\\s)]|&quot;|$))`;
+
+          const attr = new RegExp(`(\\s(?:href|src|action|poster|data-src|content)=["'])\\/${notBase}`, 'g');
+          const srcset = /(\s(?:srcset|imagesrcset|data-srcset)=["'])([^"']*)/g;
+          const cssUrl = new RegExp(`(url\\(\\s*(?:&quot;|['"])?)\\/${notBase}`, 'g');
+          const cssImport = new RegExp(`(@import\\s+["'])\\/${notBase}`, 'g');
+          const inSet = new RegExp(`(^|,\\s*)\\/${notBase}`, 'g');
+
+          async function* walk(d) {
+            for (const e of await readdir(d, { withFileTypes: true })) {
+              const p = join(d, e.name);
+              if (e.isDirectory()) yield* walk(p); else yield p;
+            }
+          }
+
+          let changed = 0;
+          for await (const file of walk(dir)) {
+            const ext = extname(file);
+            if (ext !== '.html' && ext !== '.css') continue;
+            const src = await readFile(file, 'utf8');
+            let out = src.replace(cssUrl, `$1${base}/`).replace(cssImport, `$1${base}/`);
+            if (ext === '.html') {
+              out = out
+                .replace(attr, `$1${base}/`)
+                .replace(srcset, (m, pre, val) => pre + val.replace(inSet, `$1${base}/`));
+            }
+            if (out !== src) { await writeFile(file, out); changed++; }
+          }
+          console.log(`Pfade auf ${base}/ umgeschrieben in ${changed} Dateien`);
+          EOF
+          node "$RUNNER_TEMP/rebase-paths.mjs" dist "$BASE_PATH"
+
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
