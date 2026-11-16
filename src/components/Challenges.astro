@@ -39,30 +39,6 @@ const tapeStrips = [
   class="relative overflow-hidden bg-surface ctk-section"
   data-reveal
 >
-  <svg
-    class="pointer-events-none absolute top-1/2 left-1/2 h-auto w-[130%] -translate-x-1/2 -translate-y-1/2 opacity-90"
-    style="overflow: visible;"
-    viewBox="0 0 1400 320"
-    preserveAspectRatio="xMidYMid slice"
-    aria-hidden="true"
-  >
-    <defs>
-      <pattern id="hazard-stripes" width="56" height="56" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-        <rect width="56" height="56" fill="#e01b2e" />
-        <rect width="28" height="56" fill="#ffffff" />
-      </pattern>
-    </defs>
-
-    {
-      tapeStrips.map((strip) => (
-        <g transform={strip.transform}>
-          <rect x="-200" y={strip.y} width="1800" height="76" fill="url(#hazard-stripes)" />
-          <rect x="-200" y={strip.y} width="1800" height="76" fill="none" stroke="#00000030" stroke-width="2" />
-        </g>
-      ))
-    }
-  </svg>
-
   <div class="relative mx-auto max-w-[1200px] px-6 lg:px-8">
     <div class="mx-auto max-w-2xl pb-4 text-center">
       <span class="ctk-pill mt-6"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>Häufige Hürden im Mittelstand</span>
@@ -72,7 +48,31 @@ const tapeStrips = [
       </h2>
     </div>
 
-    <div class="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="relative mt-14">
+    <svg
+      class="pointer-events-none absolute top-1/2 left-1/2 h-auto w-[130%] -translate-x-1/2 -translate-y-1/2 opacity-90"
+      viewBox="0 0 1400 320"
+      preserveAspectRatio="xMidYMid slice"
+      style="overflow: visible;"
+      aria-hidden="true"
+    >
+      <defs>
+        <pattern id="hazard-stripes" width="56" height="56" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="56" height="56" fill="#e01b2e" />
+          <rect width="28" height="56" fill="#ffffff" />
+        </pattern>
+      </defs>
+
+      {
+        tapeStrips.map((strip) => (
+          <g transform={strip.transform}>
+            <rect x="-200" y={strip.y} width="1800" height="76" fill="url(#hazard-stripes)" />
+            <rect x="-200" y={strip.y} width="1800" height="76" fill="none" stroke="#00000030" stroke-width="2" />
+          </g>
+        ))
+      }
+    </svg>
+    <div class="relative grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {
         challenges.map((item) => (
           <div class="flex flex-col items-start gap-4 ctk-card-hover ctk-card-hover--danger rounded-lg border border-border bg-white p-8">
@@ -99,6 +99,7 @@ const tapeStrips = [
           class="pointer-events-none absolute -right-5 -bottom-5 z-0 h-32 w-auto rotate-180"
         />
       </div>
+    </div>
     </div>
   </div>
 </section>

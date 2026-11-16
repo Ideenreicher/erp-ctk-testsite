@@ -118,6 +118,25 @@ body {
   border-color: var(--ctk-color-danger);
   box-shadow: 0 14px 34px -14px rgba(220, 38, 39, 0.35);
 }
+/* Roter Verlauf als Overlay, blendet beim Hover ein */
+.ctk-card-hover--danger {
+  position: relative;
+  isolation: isolate;
+}
+.ctk-card-hover--danger::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(145deg, rgba(220, 38, 39, 0.12) 0%, rgba(220, 38, 39, 0.03) 60%, rgba(220, 38, 39, 0) 100%);
+  opacity: 0;
+  transition: opacity var(--ctk-duration-fast) var(--ctk-ease-standard);
+  pointer-events: none;
+}
+.ctk-card-hover--danger:hover::before {
+  opacity: 1;
+}
 
 /* Sektionsabstand (ctk-landingpage): clamp(52px, 6.5vw, 88px) */
 .ctk-section { padding-block: clamp(52px, 6.5vw, 88px); }
